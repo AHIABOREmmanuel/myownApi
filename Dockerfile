@@ -1,22 +1,14 @@
-# Use a base image with Java 23
-FROM openjdk:23-jdk-slim AS build
-
-# Install Maven
-RUN apt-get update && apt-get install -y maven
-
-# Set the working directory
+# Use Maven to build application
+FROM maven:3.9.8-amazoncorretto-17-al2023 AS build
 WORKDIR /app
-
-# Copy the project files
 COPY pom.xml .
 COPY src ./src
-
-# Build the project
 RUN mvn clean package -DskipTests
+RUN ls -l /app/target  # Vérifiez le contenu du répertoire target
 
 # Use OpenJDK to run the application
-FROM openjdk:23-jdk-slim
+FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/admin-0.0.1.jar app.jar
+COPY --from=build /app/target/admin-0.0.1-SNAPSHOT.jar app.jar 
 EXPOSE 8080
-ENTRYPOINT [ "java", "-jar", "app.jar" ]ar", "app.jar" ]
+ENTRYPOINT [ "java", "-jar", "app.jar" ]
