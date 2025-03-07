@@ -1,15 +1,22 @@
-# Use Maven to build application
-FROM maven:3.9.8-amazoncorretto-23-al2023 AS build
-WORKDIR /app
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
+# Use a base image with Java 23
+FROM openjdk:23-jdk-slim AS build
 
+# Install Maven
+RUN apt-get update && apt-get install -y maven
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the project files
+COPY pom.xml .
 COPY src ./src
+
+# Build the project
 RUN mvn clean package -DskipTests
 
 # Use OpenJDK to run the application
-FROM amazoncorretto:17-alpine
+FROM openjdk:23-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/admin-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/splitify-backend-0.0.1.jar app.jar
 EXPOSE 8080
-ENTRYPOINT [ "java", "-jar", "app.jar" ]
+ENTRYPOINT [ "java", "-jar", "app.jar" ]ar", "app.jar" ]
