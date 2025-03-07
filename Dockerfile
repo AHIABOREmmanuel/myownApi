@@ -17,6 +17,6 @@ RUN mvn clean package -DskipTests
 # Use OpenJDK to run the application
 FROM openjdk:23-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/splitify-backend-0.0.1.jar app.jar
+COPY --from=build /app/target/admin-0.0.1.jar app.jar
 EXPOSE 8080
 ENTRYPOINT [ "java", "-jar", "app.jar" ]ar", "app.jar" ]
