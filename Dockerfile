@@ -1,5 +1,5 @@
 # Use Maven to build application
-FROM maven:3.9.8-amazoncorretto-17-al2023 AS build
+FROM maven:3.9.8-amazoncorretto-23-al2023 AS build
 WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
