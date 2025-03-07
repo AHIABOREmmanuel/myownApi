@@ -18,87 +18,77 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Engin extends AuditTable implements Serializable{
+public class Engin extends AuditTable implements Serializable {
+  
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id ;
+    private UUID trakingId;
 
-	private UUID trakingId;
+    @Column(name="immatriculation" , nullable = false)
+    private String immatriculation;
 
-	
-	@Column(name="immatriculation" , nullable = false)
-	private String immatriculation;
-	
-	
-	@ManyToOne
-	@JoinColumn(name="commissariatId")
-	private Commissariat commissariat;
-	
-	
-	@ManyToOne
-	@JoinColumn(name="motifId")
-	private Motif motif;
-	
-	
-	@ManyToOne
-	@JoinColumn(name="vehiculeId")
-	private Vehicule vehicule;
-	
-	public Engin () {}
-	
-	public Long getId() {
-		return Id;
-	}
+    @ManyToOne
+    @JoinColumn(name="commissariatId")
+    private Commissariat commissariat;
 
-	public void setId(Long id) {
-		Id = id;
-	}
-	
-	public Commissariat getCommissariat() {
-		return commissariat;
-	}
+    @ManyToOne
+    @JoinColumn(name="motifId")
+    private Motif motif;
 
-	public void setCommissariat(Commissariat commissariat) {
-		this.commissariat = commissariat;
-	}
-	
-	
-	public Motif getMotif() {
-		return motif;
-	}
+    @ManyToOne
+    @JoinColumn(name="vehiculeId")
+    private Vehicule vehicule;
 
-	public void setMotif(Motif motif) {
-		this.motif = motif;
-	}
-	
-	
-	
-	public Vehicule getVehicule() {
-		return vehicule;
-	}
+    // ❌ Le constructeur manuel a été supprimé !
 
-	public void setVehicule(Vehicule vehicule) {
-		this.vehicule = vehicule;
-	}
-	
-	
-	
-	public UUID getTrakingId() {
-		return trakingId;
-	}
+    // Getters & Setters
+    public Long getId() {
+        return Id;
+    }
 
-	public void setTrakingId(UUID trakingId) {
-		this.trakingId = trakingId;
-	}
+    public void setId(Long id) {
+        Id = id;
+    }
 
-	public String getImmatriculation() {
-		return immatriculation;
-	}
+    public Commissariat getCommissariat() {
+        return commissariat;
+    }
 
-	public void setImmatriculation(String immatriculation) {
-		this.immatriculation = immatriculation;
-	}
+    public void setCommissariat(Commissariat commissariat) {
+        this.commissariat = commissariat;
+    }
 
-	
+    public Motif getMotif() {
+        return motif;
+    }
+
+    public void setMotif(Motif motif) {
+        this.motif = motif;
+    }
+
+    public Vehicule getVehicule() {
+        return vehicule;
+    }
+
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule = vehicule;
+    }
+
+    public UUID getTrakingId() {
+        return trakingId;
+    }
+
+    public void setTrakingId(UUID trakingId) {
+        this.trakingId = trakingId;
+    }
+
+    public String getImmatriculation() {
+        return immatriculation;
+    }
+
+    public void setImmatriculation(String immatriculation) {
+        this.immatriculation = immatriculation;
+    }
 }
