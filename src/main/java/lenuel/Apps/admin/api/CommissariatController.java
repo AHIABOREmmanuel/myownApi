@@ -14,7 +14,7 @@ import lenuel.Apps.admin.service.CommissariatService;
 
 @RestController
 @RequestMapping("/api/commissariats")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class CommissariatController {
 
     private final CommissariatService commissariatService;

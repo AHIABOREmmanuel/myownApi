@@ -24,7 +24,7 @@ import lenuel.Apps.admin.service.PieceService;
 
 @RestController
 @RequestMapping("/api/pieces")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class PieceController {
 
 	 private final PieceService pieceService;

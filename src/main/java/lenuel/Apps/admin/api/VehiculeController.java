@@ -22,7 +22,7 @@ import lenuel.Apps.admin.services.impls.VehiculeServiceImplement;
 
 @RestController
 @RequestMapping("/api/vehicules")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class VehiculeController {
 
 	

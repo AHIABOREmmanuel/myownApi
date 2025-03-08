@@ -21,7 +21,7 @@ import lenuel.Apps.admin.service.MotifService;
 
 @RestController
 @RequestMapping("/api/motifs")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class MotifController {
 
 	 private final MotifService motifService;
