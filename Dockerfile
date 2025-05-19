@@ -4,7 +4,7 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
-RUN ls -l /app/target  # Vérifiez le contenu du répertoire target
+RUN ls -l /app/target  
 
 # Use OpenJDK to run the application
 FROM openjdk:17-jdk-slim
